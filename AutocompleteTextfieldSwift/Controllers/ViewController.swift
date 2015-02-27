@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, AutocompleteTextFieldDelegate, AutocompleteTextFieldDataSource, NSURLConnectionDataDelegate{
+class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConnectionDataDelegate{
 
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var autocompleTextfield: AutocompleteTextfield!
@@ -34,10 +34,13 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, Autocompl
   }
   
   private func configureView(){
-    autocompleTextfield.autoCompleteTextColor = UIColor.redColor()
-    autocompleTextfield.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Heavy", size: 12.0)
     autocompleTextfield.autoCompleteDelegate = self
-    autocompleTextfield.autoCompleteDataSource = self
+    autocompleTextfield.autoCompleteTextColor = UIColor.lightGrayColor()
+    autocompleTextfield.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Bold", size: 12.0)
+    autocompleTextfield.autoCompleteCellHeight = 35.0
+    autocompleTextfield.maximumAutoCompleteCount = 3
+    autocompleTextfield.hideWhenSelected = true
+    autocompleTextfield.hideWhenEmpty = false
   }
   
   //MARK: AutocompleteTextFieldDelegate
@@ -60,11 +63,6 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, Autocompl
     println("You selected: \(text)")
     processSelectedAddress(text)
   }
-  
-  //MARK: AutocompleteTextFieldDelegate
-  var autoCompleteCellHeight:CGFloat = 35.0
-  var maximumAutoCompleteCount = 3
-  var autoCompleEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10)
   
   //MARK: NSURLConnectionDelegate
   func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
