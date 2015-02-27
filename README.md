@@ -35,7 +35,8 @@ Here are the public properties with their default values. Properties are pretty 
 ```
 The most important property to use is the `autoCompleteStrings`. As what is declared in the description setting the value of this will automatically reload the tableview, through the use of didSet
 
-``` /// The strings to be shown on as suggestions, setting the value of this automatically reload the tableview
+```
+/// The strings to be shown on as suggestions, setting the value of this automatically reload the tableview
   var autoCompleteStrings:[String]?{
     didSet{
       reloadAutoCompleteData()
