@@ -4,13 +4,13 @@ Simple and straightforward sublass of UITextfield to manage string suggestions
 ![Sample Usage](http://i.imgur.com/EJfFLty.png)
 
 ## Installation
-Drag AutocompleteTextfield Folder in yuor project
+Drag AutocompleteTextfield Folder in your project
 
 ##How to use
 
 ####Customize
 Customize autocomplete suggestions! You can override the provided properties to create your desired appearance.
-Properties are pretty self explanatory, but description has been provided as well.
+Here are the public properties with their default values. Properties are pretty self explanatory, but description has been provided as well.
 ```
  /// Font for the text suggestions
   var autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12)
@@ -33,15 +33,15 @@ Properties are pretty self explanatory, but description has been provided as wel
   /// Hides autocomplete tableview after selecting a suggestion
   var hideWhenSelected = true
 ```
-
 The most important property to use is the `autoCompleteStrings`. As what is declared in the description setting the value of this will automatically reload the tableview, through the use of didSet
- /// The strings to be shown on as suggestions, setting the value of this automatically reload the tableview
+
+``` /// The strings to be shown on as suggestions, setting the value of this automatically reload the tableview
   var autoCompleteStrings:[String]?{
     didSet{
       reloadAutoCompleteData()
     }
   }
-
+```
 
 ####Protocol
 Conform with AutocompleteTextFieldDelegate
