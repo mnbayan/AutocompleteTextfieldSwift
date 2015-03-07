@@ -42,7 +42,7 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConn
     autocompleTextfield.maximumAutoCompleteCount = 3
     autocompleTextfield.hideWhenSelected = true
     autocompleTextfield.hideWhenEmpty = false
-    autocompleTextfield.enableAttributedText = false
+    autocompleTextfield.enableAttributedText = true
     var attributes = Dictionary<String,AnyObject>()
     attributes[NSForegroundColorAttributeName] = UIColor.blackColor()
     attributes[NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12.0)
