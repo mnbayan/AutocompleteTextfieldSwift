@@ -17,24 +17,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RNz-Bl-C7T">
-                                <rect key="frame" x="20" y="30" width="560" height="150"/>
+                                <rect key="frame" x="5" y="20" width="590" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="OOE-6b-wSz"/>
+                                    <constraint firstAttribute="height" constant="120" id="OOE-6b-wSz"/>
                                 </constraints>
                             </mapView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c03-dp-tKg" customClass="AutocompleteTextfield" customModule="AutocompleteTextfieldSwift" customModuleProvider="target">
-                                <rect key="frame" x="20" y="196" width="560" height="30"/>
+                                <rect key="frame" x="5" y="139" width="590" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RNz-Bl-C7T" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="2Y1-Ev-b7d"/>
-                            <constraint firstAttribute="trailing" secondItem="RNz-Bl-C7T" secondAttribute="trailing" constant="20" id="Dmt-JF-Jpx"/>
-                            <constraint firstItem="c03-dp-tKg" firstAttribute="top" secondItem="RNz-Bl-C7T" secondAttribute="bottom" constant="16" id="UvU-t4-37H"/>
+                            <constraint firstItem="RNz-Bl-C7T" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="2Y1-Ev-b7d"/>
+                            <constraint firstAttribute="trailing" secondItem="RNz-Bl-C7T" secondAttribute="trailing" constant="5" id="Dmt-JF-Jpx"/>
+                            <constraint firstItem="c03-dp-tKg" firstAttribute="top" secondItem="RNz-Bl-C7T" secondAttribute="bottom" constant="-1" id="UvU-t4-37H"/>
                             <constraint firstItem="c03-dp-tKg" firstAttribute="trailing" secondItem="RNz-Bl-C7T" secondAttribute="trailing" id="VAN-GP-9Mu"/>
-                            <constraint firstItem="RNz-Bl-C7T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="mpy-go-rmj"/>
+                            <constraint firstItem="RNz-Bl-C7T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="mpy-go-rmj"/>
                             <constraint firstItem="c03-dp-tKg" firstAttribute="leading" secondItem="RNz-Bl-C7T" secondAttribute="leading" id="nKN-As-oUO"/>
                         </constraints>
                     </view>

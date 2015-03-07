@@ -20,6 +20,7 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConn
   private var connection:NSURLConnection?
   
   private let googleMapsKey = "AIzaSyD8-OfZ21X2QLS1xLzu1CLCfPVmGtch7lo"
+  private let baseURLString = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -41,17 +42,20 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConn
     autocompleTextfield.maximumAutoCompleteCount = 3
     autocompleTextfield.hideWhenSelected = true
     autocompleTextfield.hideWhenEmpty = false
+    autocompleTextfield.enableAttributedText = true
+    autocompleTextfield.autoCompleteAttributes = [NSForegroundColorAttributeName:UIColor.blueColor()]
   }
   
   //MARK: AutocompleteTextFieldDelegate
-  func textFieldDidChange(text: String) {
+  
+  func autoCompleteTextFieldDidChange(text: String) {
     if !text.isEmpty{
       if connection != nil{
         connection!.cancel()
         connection = nil
       }
-      let baseURLString = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
-      let url = NSURL(string: "\(baseURLString)?key=\(googleMapsKey)&input=\(text)")
+      let urlString = "\(baseURLString)?key=\(googleMapsKey)&input=\(text)"
+      let url = NSURL(string: urlString.stringByAddingPercentEscapesUsingEncoding(NSASCIIStringEncoding)!)
       if url != nil{
         let urlRequest = NSURLRequest(URL: url!)
         connection = NSURLConnection(request: urlRequest, delegate: self)
