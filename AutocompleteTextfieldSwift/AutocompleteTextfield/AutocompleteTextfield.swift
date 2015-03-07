@@ -102,7 +102,8 @@ class AutocompleteTextfield:UITextField, UITableViewDataSource, UITableViewDeleg
   //MARK: Initialization
   func initialize(){
     
-    autoCompleteAttributes = [NSFontAttributeName:UIFont.systemFontOfSize(12.0), NSForegroundColorAttributeName:UIColor.blackColor()]
+    autoCompleteAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
+    autoCompleteAttributes![NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12)
     
     setupTextField()
     setupTableView()

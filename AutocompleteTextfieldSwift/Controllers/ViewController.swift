@@ -43,7 +43,10 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConn
     autocompleTextfield.hideWhenSelected = true
     autocompleTextfield.hideWhenEmpty = false
     autocompleTextfield.enableAttributedText = true
-    autocompleTextfield.autoCompleteAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
+    var attributes = Dictionary<String,AnyObject>()
+    attributes[NSForegroundColorAttributeName] = UIColor.lightGrayColor()
+    attributes[NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12.0)
+    autocompleTextfield.autoCompleteAttributes = attributes
   }
   
   //MARK: AutocompleteTextFieldDelegate
