@@ -1,7 +1,7 @@
 # AutocompleteTextfieldSwift
 Simple and straightforward sublass of UITextfield to manage string suggestions
 
-![Sample Usage](http://i.imgur.com/EJfFLty.png)
+![Sample Usage](http://i.imgur.com/3cyKcsA.png?1)
 
 ## Installation
 Drag AutocompleteTextfield Folder in yuor project
@@ -101,7 +101,7 @@ func didSelectAutocompleteText(text: String, indexPath: NSIndexPath) {
       }
     })
   }
-```
+  ```
 
 It's that easy!
 

@@ -37,14 +37,14 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConn
   private func configureView(){
     autocompleTextfield.autoCompleteDelegate = self
     autocompleTextfield.autoCompleteTextColor = UIColor.lightGrayColor()
-    autocompleTextfield.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Bold", size: 12.0)
+    autocompleTextfield.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12.0)
     autocompleTextfield.autoCompleteCellHeight = 35.0
     autocompleTextfield.maximumAutoCompleteCount = 3
     autocompleTextfield.hideWhenSelected = true
     autocompleTextfield.hideWhenEmpty = false
-    autocompleTextfield.enableAttributedText = true
+    autocompleTextfield.enableAttributedText = false
     var attributes = Dictionary<String,AnyObject>()
-    attributes[NSForegroundColorAttributeName] = UIColor.lightGrayColor()
+    attributes[NSForegroundColorAttributeName] = UIColor.blackColor()
     attributes[NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12.0)
     autocompleTextfield.autoCompleteAttributes = attributes
   }
