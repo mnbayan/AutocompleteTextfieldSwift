@@ -43,7 +43,7 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConn
     autocompleTextfield.hideWhenSelected = true
     autocompleTextfield.hideWhenEmpty = false
     autocompleTextfield.enableAttributedText = true
-    autocompleTextfield.autoCompleteAttributes = [NSForegroundColorAttributeName:UIColor.blueColor()]
+    autocompleTextfield.autoCompleteAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
   }
   
   //MARK: AutocompleteTextFieldDelegate
@@ -65,7 +65,13 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConn
   
   func didSelectAutocompleteText(text: String, indexPath: NSIndexPath) {
     println("You selected: \(text)")
-    processSelectedAddress(text)
+    Location.geocodeAddressString(text, completion: { (placemark, error) -> Void in
+      if placemark != nil{
+        let coordinate = placemark!.location.coordinate
+        self.addAnnotation(coordinate, address: text)
+        self.mapView.setCenterCoordinate(coordinate, zoomLevel: 12, animated: true)
+      }
+    })
   }
   
   //MARK: NSURLConnectionDelegate
@@ -100,16 +106,6 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConn
   }
   
   //MARK: Map Utilities
-  private func processSelectedAddress(address:String){
-    Location.geocodeAddressString(address, completion: { (placemark, error) -> Void in
-      if placemark != nil{
-        let coordinate = placemark!.location.coordinate
-        self.addAnnotation(coordinate, address: address)
-        self.mapView.setCenterCoordinate(coordinate, zoomLevel: 12, animated: true)
-      }
-    })
-  }
-  
   private func addAnnotation(coordinate:CLLocationCoordinate2D, address:String?){
     if selectedPointAnnotation != nil{
       mapView.removeAnnotation(selectedPointAnnotation)

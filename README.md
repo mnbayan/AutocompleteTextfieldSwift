@@ -32,15 +32,28 @@ Properties are pretty self explanatory, but description has been provided as wel
   
   /// Hides autocomplete tableview after selecting a suggestion
   var hideWhenSelected = true
+  
+  /// Shows autocomplete text with formatting
+  var enableAttributedText = false
+  
+  /// User Defined Attributes
+  var autoCompleteAttributes:Dictionary<String,AnyObject>?
+  
+  /// The table view height
+  var autoCompleteTableHeight:CGFloat = 100.0
+
 ```
 
-The most important property to use is the `autoCompleteStrings`. As what is declared in the description setting the value of this will automatically reload the tableview, through the use of didSet
+The most important property to use is the `autoCompleteStrings`. As what is declared in the description setting the value of this will automatically reload the tableview, through the use of `didSet`
+ 
+ ```
  /// The strings to be shown on as suggestions, setting the value of this automatically reload the tableview
   var autoCompleteStrings:[String]?{
     didSet{
       reloadAutoCompleteData()
     }
   }
+  ```
 
 
 ####Protocol
@@ -59,14 +72,14 @@ autocompleTextfield.autoCompleteDelegate = self
 After this you can do whatever you want with the provided delegates! In here i used `textFieldDidChange(text:String)` to request autocomplete places to google api 
 
 ```
-func textFieldDidChange(text: String) {
+func autoCompleteTextFieldDidChange(text: String) {
     if !text.isEmpty{
       if connection != nil{
         connection!.cancel()
         connection = nil
       }
-      let baseURLString = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
-      let url = NSURL(string: "\(baseURLString)?key=\(googleMapsKey)&input=\(text)")
+      let urlString = "\(baseURLString)?key=\(googleMapsKey)&input=\(text)"
+      let url = NSURL(string: urlString.stringByAddingPercentEscapesUsingEncoding(NSASCIIStringEncoding)!)
       if url != nil{
         let urlRequest = NSURLRequest(URL: url!)
         connection = NSURLConnection(request: urlRequest, delegate: self)
@@ -77,6 +90,19 @@ func textFieldDidChange(text: String) {
 
 and `didSelectAutocompleteText(text:String, indexPath:NSIndexPath)` to process the selected string, in which I performed geocoding using `CLGeocoder` to retrieve placemark and add annotation to our mapview.
 
+```
+func didSelectAutocompleteText(text: String, indexPath: NSIndexPath) {
+    println("You selected: \(text)")
+    Location.geocodeAddressString(text, completion: { (placemark, error) -> Void in
+      if placemark != nil{
+        let coordinate = placemark!.location.coordinate
+        self.addAnnotation(coordinate, address: text)
+        self.mapView.setCenterCoordinate(coordinate, zoomLevel: 12, animated: true)
+      }
+    })
+  }
+```
+
 It's that easy!
 
 ##Example Code:
@@ -85,7 +111,4 @@ In the example project, I used [Google Places Autocomplete API](https://develope
 #####Note: _If you want to create your own Google Api Key follow the steps in this [link](https://developers.google.com/maps/documentation/javascript/tutorial#api_key)_
 
 ##License
-AutocompleteTextfield is under MIT license. See LICENSE for details.
-
-##In the future
-- support for attributedText
+AutocompleteTextfield is under [MIT license](http://opensource.org/licenses/MIT). See LICENSE for details.
