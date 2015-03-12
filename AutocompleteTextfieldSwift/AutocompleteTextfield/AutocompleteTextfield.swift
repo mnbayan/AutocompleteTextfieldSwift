@@ -54,7 +54,11 @@ class AutocompleteTextfield:UITextField, UITableViewDataSource, UITableViewDeleg
   var autoCompleteSeparatorInset = UIEdgeInsetsZero
   
   /// Hides autocomplete tableview when the textfield is empty
-  var hideWhenEmpty = true
+  var hideWhenEmpty:Bool?{
+    didSet{
+      tableViewSetHidden(hideWhenEmpty!)
+    }
+  }
   
   /// Hides autocomplete tableview after selecting a suggestion
   var hideWhenSelected = true
@@ -122,7 +126,7 @@ class AutocompleteTextfield:UITextField, UITableViewDataSource, UITableViewDeleg
     self.superview?.addSubview(tableView)
     
     autoCompleteTableView = tableView
-    tableViewSetHidden(hideWhenEmpty)
+    tableViewSetHidden(true)
   }
 
   private func tableViewSetHidden(hidden:Bool){
@@ -161,7 +165,9 @@ class AutocompleteTextfield:UITextField, UITableViewDataSource, UITableViewDeleg
       autoCompleteStrings = nil
     }
     
-    if hideWhenEmpty {
+    hideWhenEmpty = hideWhenEmpty != nil ? hideWhenEmpty! : true
+    
+    if hideWhenEmpty! {
       tableViewSetHidden(text.isEmpty)
     }
     else{
