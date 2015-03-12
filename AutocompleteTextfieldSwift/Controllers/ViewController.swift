@@ -16,7 +16,6 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConn
   
   private var responseData:NSMutableData?
   private var selectedPointAnnotation:MKPointAnnotation?
-  private var locationManager = CLLocationManager()
   private var connection:NSURLConnection?
   
   private let googleMapsKey = "AIzaSyD8-OfZ21X2QLS1xLzu1CLCfPVmGtch7lo"
@@ -83,7 +82,7 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConn
   }
   
   func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-    responseData = NSMutableData(data: data)
+    responseData?.appendData(data)
   }
 
   func connectionDidFinishLoading(connection: NSURLConnection) {
