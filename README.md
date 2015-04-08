@@ -9,7 +9,7 @@ Simple        | Attributed
 
 
 ## Installation
-Drag AutocompleteTextfield Folder in yuor project
+Drag AutocompleteTextfield Folder into your project
 
 ##How to use
 
@@ -74,7 +74,7 @@ and add:
 autocompleTextfield.autoCompleteDelegate = self
 ```
 
-After this you can do whatever you want with the provided delegates! In here i used `textFieldDidChange(text:String)` to request autocomplete places to google api 
+After this you can do whatever you want with the provided delegates! In here I used `textFieldDidChange(text:String)` to request autocomplete places to google api 
 
 ```
 func autoCompleteTextFieldDidChange(text: String) {
