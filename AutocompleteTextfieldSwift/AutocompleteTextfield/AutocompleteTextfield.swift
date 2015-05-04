@@ -77,40 +77,35 @@ class AutocompleteTextfield:UITextField, UITableViewDataSource, UITableViewDeleg
   
   private var attributedAutocompleteStrings:[NSAttributedString]?
   
-  
-  override init() {
-    super.init()
-    
-    initialize()
-  }
-  
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    initialize()
+    initialize(superview)
   }
   
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     
-    initialize()
+    initialize(superview)
   }
   
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    initialize()
+    initialize(superview)
   }
   
+  override func willMoveToSuperview(newSuperview: UIView?) {
+    initialize(newSuperview)
+  }
   
   //MARK: Initialization
-  func initialize(){
-    
+  func initialize(superView:UIView?){
     autoCompleteAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
     autoCompleteAttributes![NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12)
     
     setupTextField()
-    setupTableView()
+    setupTableView(superView)
   }
   
   private func setupTextField(){
@@ -118,13 +113,14 @@ class AutocompleteTextfield:UITextField, UITableViewDataSource, UITableViewDeleg
     self.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
   }
   
-  private func setupTableView(){
+  private func setupTableView(view:UIView?){
     let screenSize = UIScreen.mainScreen().bounds.size
     let tableView = UITableView(frame: CGRectMake(self.frame.origin.x, self.frame.origin.y + CGRectGetHeight(self.frame), screenSize.width - (self.frame.origin.x * 2), autoCompleteTableHeight))
+    
     tableView.dataSource = self
     tableView.delegate = self
-    self.superview?.addSubview(tableView)
-    
+    view?.addSubview(tableView)
+
     autoCompleteTableView = tableView
     tableViewSetHidden(true)
   }
@@ -149,7 +145,7 @@ class AutocompleteTextfield:UITextField, UITableViewDataSource, UITableViewDeleg
         for i in 0..<autoCompleteStrings!.count{
           let str = autoCompleteStrings![i] as NSString
           let range = str.rangeOfString(text, options: .CaseInsensitiveSearch)
-          var attString = NSMutableAttributedString(string: str, attributes: attrs)
+          var attString = NSMutableAttributedString(string: autoCompleteStrings![i], attributes: attrs)
           attString.addAttributes(autoCompleteAttributes!, range: range)
           attributedAutocompleteStrings?.append(attString)
         }

@@ -34,7 +34,7 @@ class Location{
         return
       }
       
-      let placemark = placemarks[0] as CLPlacemark
+      let placemark = placemarks[0] as! CLPlacemark
       completion(placemark: placemark, error: nil)
       
     })

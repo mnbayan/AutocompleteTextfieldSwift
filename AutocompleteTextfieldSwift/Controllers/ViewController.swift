@@ -12,7 +12,7 @@ import MapKit
 class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConnectionDataDelegate{
 
   @IBOutlet weak var mapView: MKMapView!
-  @IBOutlet weak var autocompleTextfield: AutocompleteTextfield!
+  @IBOutlet weak var autocompleteTextfield: AutocompleteTextfield!
   
   private var responseData:NSMutableData?
   private var selectedPointAnnotation:MKPointAnnotation?
@@ -34,18 +34,18 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConn
   }
   
   private func configureView(){
-    autocompleTextfield.autoCompleteDelegate = self
-    autocompleTextfield.autoCompleteTextColor = UIColor.lightGrayColor()
-    autocompleTextfield.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12.0)
-    autocompleTextfield.autoCompleteCellHeight = 35.0
-    autocompleTextfield.maximumAutoCompleteCount = 3
-    autocompleTextfield.hideWhenSelected = true
-    autocompleTextfield.hideWhenEmpty = false
-    autocompleTextfield.enableAttributedText = false
+    autocompleteTextfield.autoCompleteDelegate = self
+    autocompleteTextfield.autoCompleteTextColor = UIColor.lightGrayColor()
+    autocompleteTextfield.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12.0)
+    autocompleteTextfield.autoCompleteCellHeight = 35.0
+    autocompleteTextfield.maximumAutoCompleteCount = 3
+    autocompleteTextfield.hideWhenSelected = true
+    autocompleteTextfield.hideWhenEmpty = false
+    autocompleteTextfield.enableAttributedText = false
     var attributes = Dictionary<String,AnyObject>()
     attributes[NSForegroundColorAttributeName] = UIColor.blackColor()
     attributes[NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12.0)
-    autocompleTextfield.autoCompleteAttributes = attributes
+    autocompleteTextfield.autoCompleteAttributes = attributes
   }
   
   //MARK: AutocompleteTextFieldDelegate
@@ -93,10 +93,10 @@ class ViewController: UIViewController, AutocompleteTextFieldDelegate, NSURLConn
         if status == "OK"{
           if let predictions = result["predictions"] as? NSArray{
             var locations = [String]()
-            for dict in predictions as [NSDictionary]{
-              locations.append(dict["description"] as String)
+            for dict in predictions as! [NSDictionary]{
+              locations.append(dict["description"] as! String)
             }
-            self.autocompleTextfield.autoCompleteStrings = locations
+            self.autocompleteTextfield.autoCompleteStrings = locations
           }
         }
       }
