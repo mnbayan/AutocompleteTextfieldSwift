@@ -27,7 +27,7 @@ public var hidesWhenSelected = true
 ```
 
 
- ####Setting Content
+####Setting Content
 The most important property to use is the `autoCompleteStrings`. As what is declared in the description setting the value of this will automatically reload the tableview, through the use of `didSet`
  ```
 /// The strings to be shown on as suggestions, setting the value of this automatically reload the tableview
