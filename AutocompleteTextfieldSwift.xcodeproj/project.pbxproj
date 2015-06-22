@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F94D790E1B386A29002E84A9 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D790D1B386A29002E84A9 /* AutoCompleteTextField.swift */; };
 		F96E318F1A98DC36001DCEBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F96E318D1A98DC36001DCEBF /* Main.storyboard */; };
 		F96E31911A98DC36001DCEBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96E31901A98DC36001DCEBF /* Images.xcassets */; };
 		F96E31941A98DC36001DCEBF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96E31921A98DC36001DCEBF /* LaunchScreen.xib */; };
 		F96E31A01A98DC36001DCEBF /* AutocompleteTextfieldSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E319F1A98DC36001DCEBF /* AutocompleteTextfieldSwiftTests.swift */; };
 		F96E31B41A98DCA3001DCEBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E31B11A98DCA3001DCEBF /* AppDelegate.swift */; };
 		F96E31B51A98DCA3001DCEBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E31B21A98DCA3001DCEBF /* ViewController.swift */; };
-		F96E31B71A98DD05001DCEBF /* AutocompleteTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E31B61A98DD05001DCEBF /* AutocompleteTextfield.swift */; };
 		F99A8A351A99ACA700DFD19D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99A8A341A99ACA700DFD19D /* MapKit.framework */; };
 		F99A8A371A99ACAB00DFD19D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99A8A361A99ACAB00DFD19D /* CoreLocation.framework */; };
 		F99A8A3A1A99AD5300DFD19D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A8A391A99AD5300DFD19D /* Service.swift */; };
@@ -32,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F94D790D1B386A29002E84A9 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		F96E31841A98DC35001DCEBF /* AutocompleteTextfieldSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutocompleteTextfieldSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96E31881A98DC35001DCEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F96E318E1A98DC36001DCEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -42,7 +43,6 @@
 		F96E319F1A98DC36001DCEBF /* AutocompleteTextfieldSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteTextfieldSwiftTests.swift; sourceTree = "<group>"; };
 		F96E31B11A98DCA3001DCEBF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F96E31B21A98DCA3001DCEBF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F96E31B61A98DD05001DCEBF /* AutocompleteTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteTextfield.swift; sourceTree = "<group>"; };
 		F99A8A341A99ACA700DFD19D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F99A8A361A99ACAB00DFD19D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F99A8A391A99AD5300DFD19D /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -70,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F94D790C1B386A29002E84A9 /* AutoCompleteTextField */ = {
+			isa = PBXGroup;
+			children = (
+				F94D790D1B386A29002E84A9 /* AutoCompleteTextField.swift */,
+			);
+			path = AutoCompleteTextField;
+			sourceTree = "<group>";
+		};
 		F96E317B1A98DC35001DCEBF = {
 			isa = PBXGroup;
 			children = (
@@ -93,8 +101,8 @@
 		F96E31861A98DC35001DCEBF /* AutocompleteTextfieldSwift */ = {
 			isa = PBXGroup;
 			children = (
+				F94D790C1B386A29002E84A9 /* AutoCompleteTextField */,
 				F99A8A381A99AD4300DFD19D /* Helpers */,
-				F96E31AF1A98DCA3001DCEBF /* AutocompleteTextfield */,
 				F96E31B01A98DCA3001DCEBF /* Controllers */,
 				F96E31B31A98DCA3001DCEBF /* Views */,
 				F96E31901A98DC36001DCEBF /* Images.xcassets */,
@@ -126,14 +134,6 @@
 				F96E319E1A98DC36001DCEBF /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F96E31AF1A98DCA3001DCEBF /* AutocompleteTextfield */ = {
-			isa = PBXGroup;
-			children = (
-				F96E31B61A98DD05001DCEBF /* AutocompleteTextfield.swift */,
-			);
-			path = AutocompleteTextfield;
 			sourceTree = "<group>";
 		};
 		F96E31B01A98DCA3001DCEBF /* Controllers */ = {
@@ -208,6 +208,7 @@
 		F96E317C1A98DC35001DCEBF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = MaiLin;
 				TargetAttributes = {
@@ -267,9 +268,9 @@
 				F99A8A3C1A99ADAF00DFD19D /* MKMapViewExtension.swift in Sources */,
 				F96E31B51A98DCA3001DCEBF /* ViewController.swift in Sources */,
 				F99A8A3A1A99AD5300DFD19D /* Service.swift in Sources */,
+				F94D790E1B386A29002E84A9 /* AutoCompleteTextField.swift in Sources */,
 				F96E31B41A98DCA3001DCEBF /* AppDelegate.swift in Sources */,
 				F99A8A421A99CEF500DFD19D /* Location.swift in Sources */,
-				F96E31B71A98DD05001DCEBF /* AutocompleteTextfield.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

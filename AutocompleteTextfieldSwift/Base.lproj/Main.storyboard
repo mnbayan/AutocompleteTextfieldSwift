@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="f7X-UW-gQ8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--AutoCompleteTextField-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AutocompleteTextfieldSwift" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,34 +17,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RNz-Bl-C7T">
-                                <rect key="frame" x="5" y="20" width="590" height="120"/>
+                                <rect key="frame" x="5" y="64" width="590" height="120"/>
+                                <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="OOE-6b-wSz"/>
+                                    <constraint firstAttribute="height" constant="120" id="YUa-Yk-cA4"/>
                                 </constraints>
                             </mapView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c03-dp-tKg" customClass="AutocompleteTextfield" customModule="AutocompleteTextfieldSwift" customModuleProvider="target">
-                                <rect key="frame" x="5" y="139" width="590" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c03-dp-tKg" customClass="AutoCompleteTextField" customModule="AutocompleteTextfieldSwift" customModuleProvider="target">
+                                <rect key="frame" x="5" y="185" width="590" height="30"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RNz-Bl-C7T" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="2Y1-Ev-b7d"/>
-                            <constraint firstAttribute="trailing" secondItem="RNz-Bl-C7T" secondAttribute="trailing" constant="5" id="Dmt-JF-Jpx"/>
-                            <constraint firstItem="c03-dp-tKg" firstAttribute="top" secondItem="RNz-Bl-C7T" secondAttribute="bottom" constant="-1" id="UvU-t4-37H"/>
-                            <constraint firstItem="c03-dp-tKg" firstAttribute="trailing" secondItem="RNz-Bl-C7T" secondAttribute="trailing" id="VAN-GP-9Mu"/>
-                            <constraint firstItem="RNz-Bl-C7T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="mpy-go-rmj"/>
-                            <constraint firstItem="c03-dp-tKg" firstAttribute="leading" secondItem="RNz-Bl-C7T" secondAttribute="leading" id="nKN-As-oUO"/>
+                            <constraint firstAttribute="trailing" secondItem="RNz-Bl-C7T" secondAttribute="trailing" constant="5" id="84m-SS-ol6"/>
+                            <constraint firstItem="c03-dp-tKg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="ALr-5d-5JH"/>
+                            <constraint firstAttribute="trailing" secondItem="c03-dp-tKg" secondAttribute="trailing" constant="5" id="NZ1-U3-CnM"/>
+                            <constraint firstItem="RNz-Bl-C7T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="eUo-RT-HZs"/>
+                            <constraint firstItem="RNz-Bl-C7T" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="ndh-u7-US3"/>
+                            <constraint firstItem="c03-dp-tKg" firstAttribute="top" secondItem="RNz-Bl-C7T" secondAttribute="bottom" constant="1" id="vdv-LL-YZP"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="AutoCompleteTextField" id="aqz-rs-0ri"/>
                     <connections>
-                        <outlet property="autocompleteTextfield" destination="c03-dp-tKg" id="Znp-cK-u3H"/>
+                        <outlet property="autocompleteTextfield" destination="c03-dp-tKg" id="Vki-7S-0rq"/>
                         <outlet property="mapView" destination="RNz-Bl-C7T" id="T3s-Pq-pop"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1079" y="251"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rW1-AK-Qiv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f7X-UW-gQ8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9m8-De-ZGg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="drU-st-3mY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xUO-IJ-MtX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="258" y="-442"/>
         </scene>
     </scenes>
 </document>
