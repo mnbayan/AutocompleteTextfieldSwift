@@ -60,8 +60,8 @@ In the example project, I used [Google Places Autocomplete API](https://develope
 
 #####Note: _If you want to create your own Google Api Key follow the steps in this [link](https://developers.google.com/maps/documentation/javascript/tutorial#api_key)_
 
-##Found a bug? Feature request?
-Report an issue and we'll see what i can do. :)
+##Swift 2.0 Compatibility
+See `swift2.0` branch. This will be merged to master once Xcode 7 goes out of beta.
 
 ##License
 AutocompleteTextfield is under [MIT license](http://opensource.org/licenses/MIT). See LICENSE for details.
