@@ -74,6 +74,7 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
     }
     
     private func commonInit(){
+        hidesWhenEmpty = true
         autoCompleteAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
         autoCompleteAttributes![NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12)
         self.clearButtonMode = .Always
