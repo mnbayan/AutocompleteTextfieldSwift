@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F90275DC1B3E8D5E008185E8 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90275DB1B3E8D5E008185E8 /* AutoCompleteTextField.swift */; };
-		F96E318F1A98DC36001DCEBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F96E318D1A98DC36001DCEBF /* Main.storyboard */; };
+		F905D60F1B419684009DA356 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F905D60B1B419684009DA356 /* LaunchScreen.xib */; };
+		F905D6101B419684009DA356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F905D60D1B419684009DA356 /* Main.storyboard */; };
 		F96E31911A98DC36001DCEBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96E31901A98DC36001DCEBF /* Images.xcassets */; };
-		F96E31941A98DC36001DCEBF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96E31921A98DC36001DCEBF /* LaunchScreen.xib */; };
 		F96E31A01A98DC36001DCEBF /* AutocompleteTextfieldSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E319F1A98DC36001DCEBF /* AutocompleteTextfieldSwiftTests.swift */; };
 		F96E31B41A98DCA3001DCEBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E31B11A98DCA3001DCEBF /* AppDelegate.swift */; };
 		F96E31B51A98DCA3001DCEBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E31B21A98DCA3001DCEBF /* ViewController.swift */; };
@@ -33,11 +33,11 @@
 
 /* Begin PBXFileReference section */
 		F90275DB1B3E8D5E008185E8 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
+		F905D60C1B419684009DA356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = AutocompleteTextfieldSwift/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
+		F905D60E1B419684009DA356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AutocompleteTextfieldSwift/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		F96E31841A98DC35001DCEBF /* AutocompleteTextfieldSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutocompleteTextfieldSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96E31881A98DC35001DCEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F96E318E1A98DC36001DCEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F96E31901A98DC36001DCEBF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F96E31931A98DC36001DCEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F96E31991A98DC36001DCEBF /* AutocompleteTextfieldSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutocompleteTextfieldSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96E319E1A98DC36001DCEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F96E319F1A98DC36001DCEBF /* AutocompleteTextfieldSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteTextfieldSwiftTests.swift; sourceTree = "<group>"; };
@@ -148,8 +148,8 @@
 		F96E31B31A98DCA3001DCEBF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F96E318D1A98DC36001DCEBF /* Main.storyboard */,
-				F96E31921A98DC36001DCEBF /* LaunchScreen.xib */,
+				F905D60B1B419684009DA356 /* LaunchScreen.xib */,
+				F905D60D1B419684009DA356 /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -245,8 +245,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F96E318F1A98DC36001DCEBF /* Main.storyboard in Resources */,
-				F96E31941A98DC36001DCEBF /* LaunchScreen.xib in Resources */,
+				F905D6101B419684009DA356 /* Main.storyboard in Resources */,
+				F905D60F1B419684009DA356 /* LaunchScreen.xib in Resources */,
 				F96E31911A98DC36001DCEBF /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,22 +293,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F96E318D1A98DC36001DCEBF /* Main.storyboard */ = {
+		F905D60B1B419684009DA356 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F96E318E1A98DC36001DCEBF /* Base */,
-			);
-			name = Main.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		F96E31921A98DC36001DCEBF /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F96E31931A98DC36001DCEBF /* Base */,
+				F905D60C1B419684009DA356 /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = ..;
+			sourceTree = "<group>";
+		};
+		F905D60D1B419684009DA356 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F905D60E1B419684009DA356 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

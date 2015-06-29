@@ -33,15 +33,19 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
     public var enableAttributedText = false
     /// User Defined Attributes
     public var autoCompleteAttributes:[String:AnyObject]?
-    /// The table view height
-    public var autoCompleteTableHeight:CGFloat = 100.0
-    /// Hides autocomplete tableview after selecting a suggestion
+    // Hides autocomplete tableview after selecting a suggestion
     public var hidesWhenSelected = true
     /// Hides autocomplete tableview when the textfield is empty
     public var hidesWhenEmpty:Bool?{
         didSet{
             assert(hidesWhenEmpty != nil, "hideWhenEmpty cannot be set to nil")
             autoCompleteTableView?.hidden = hidesWhenEmpty!
+        }
+    }
+    /// The table view height
+    public var autoCompleteTableHeight:CGFloat?{
+        didSet{
+            redrawTable()
         }
     }
     /// The strings to be shown on as suggestions, setting the value of this automatically reload the tableview
@@ -83,13 +87,19 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
     
     private func setupAutocompleteTable(view:UIView){
         let screenSize = UIScreen.mainScreen().bounds.size
-        let tableView = UITableView(frame: CGRectMake(self.frame.origin.x, self.frame.origin.y + CGRectGetHeight(self.frame), screenSize.width - (self.frame.origin.x * 2), autoCompleteTableHeight))
+        let tableView = UITableView(frame: CGRectMake(self.frame.origin.x, self.frame.origin.y + CGRectGetHeight(self.frame), screenSize.width - (self.frame.origin.x * 2), 100.0))
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = autoCompleteCellHeight
         tableView.hidden = hidesWhenEmpty ?? true
         view.addSubview(tableView)
         autoCompleteTableView = tableView
+    }
+    
+    private func redrawTable(){
+        var newFrame = autoCompleteTableView?.frame
+        newFrame!.size.height = autoCompleteTableHeight!
+        autoCompleteTableView?.frame = newFrame!
     }
     
     //MARK: - UITableViewDataSource
