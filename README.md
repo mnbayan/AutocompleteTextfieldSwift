@@ -9,9 +9,9 @@ Plain        | Attributed
 ## Installation
 Drag AutoCompleteTextField Folder in your project
 
-##How to use
+## How to use
 
-####Customize
+#### Customize
 Customize autocomplete suggestions! You can override the provided properties to create your desired appearance.
 Properties are pretty self explanatory. Some of them are listed below, with their respective default values:
 
@@ -27,7 +27,7 @@ public var hidesWhenSelected = true
 ```
 
 
-####Setting Content
+#### Setting Content
 The most important property to use is the `autoCompleteStrings`. As what is declared in the description setting the value of this will automatically reload the tableview, through the use of `didSet`
  ```
 /// The strings to be shown on as suggestions, setting the value of this automatically reload the tableview
@@ -37,7 +37,7 @@ public var autoCompleteStrings:[String]?{
   ```
 
 
-####User Interactions
+#### User Interactions
 To handle text changed event, use `onTextChange:` closure. This returns the current text content of the textfield.
 ```
 autocompleteTextfield.onTextChange = {[weak self] text in 
@@ -55,13 +55,12 @@ autocompleteTextfield.onSelect = {[weak self] text, indexpath in
 ```
 It's that easy! Feel free to use it, don't worry, it's free. :)
 
-##Example Code:
-In the example project, I used [Google Places Autocomplete API](https://developers.google.com/places/documentation/autocomplete) to show the usage of this library. For testing purposes i created my own google api key
+## Example Code:
+In the example project, I used [Google Places Autocomplete API](https://developers.google.com/places/documentation/autocomplete) to show the usage of this library. For testing purposes i created my own google api key.
 
-#####Note: _If you want to create your own Google Api Key follow the steps in this [link](https://developers.google.com/maps/documentation/javascript/tutorial#api_key)_
+If you want to create your own Google Api Key follow the steps in this [link](https://developers.google.com/maps/documentation/javascript/tutorial#api_key)
 
-##Swift 2.0 Compatibility
-See `swift2.0` branch. This will be merged to master once Xcode 7 goes out of beta.
+##### Note: Recent updates in google places API requires you to enable "Google Places API Web Service" and use a Server Key instead of an iOS key. To do so, go to [Google Developers Console](https://console.developers.google.com/).
 
-##License
+## License
 AutocompleteTextfield is under [MIT license](http://opensource.org/licenses/MIT). See LICENSE for details.
