@@ -61,7 +61,7 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
         setupAutocompleteTable(superview!)
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -113,7 +113,7 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "autocompleteCellIdentifier"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
         if cell == nil{
             cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
         }
@@ -169,7 +169,7 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
                 for i in 0..<autoCompleteStrings!.count{
                     let str = autoCompleteStrings![i] as NSString
                     let range = str.rangeOfString(text!, options: .CaseInsensitiveSearch)
-                    var attString = NSMutableAttributedString(string: autoCompleteStrings![i], attributes: attrs)
+                    let attString = NSMutableAttributedString(string: autoCompleteStrings![i], attributes: attrs)
                     attString.addAttributes(autoCompleteAttributes!, range: range)
                     attributedAutoCompleteStrings?.append(attString)
                 }
