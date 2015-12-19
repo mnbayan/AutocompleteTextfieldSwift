@@ -55,7 +55,7 @@ class ViewController: UIViewController, NSURLConnectionDataDelegate{
           self!.connection = nil
         }
         let urlString = "\(self!.baseURLString)?key=\(self!.googleMapsKey)&input=\(text)"
-        let url = NSURL(string: (urlString as NSString).stringByAddingPercentEscapesUsingEncoding(NSASCIIStringEncoding)!)
+        let url = NSURL(string: (urlString as NSString).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
         if url != nil{
           let urlRequest = NSURLRequest(URL: url!)
           self!.connection = NSURLConnection(request: urlRequest, delegate: self)
