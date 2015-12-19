@@ -54,7 +54,7 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
     }
     
     
-    //MARK: - Init
+    //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -77,33 +77,10 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
         setupAutocompleteTable(newSuperview!)
     }
     
-    private func commonInit(){
-        hidesWhenEmpty = true
-        autoCompleteAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
-        autoCompleteAttributes![NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12)
-        self.clearButtonMode = .Always
-        self.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
-    }
-    
-    private func setupAutocompleteTable(view:UIView){
-        let screenSize = UIScreen.mainScreen().bounds.size
-        let tableView = UITableView(frame: CGRectMake(self.frame.origin.x, self.frame.origin.y + CGRectGetHeight(self.frame), screenSize.width - (self.frame.origin.x * 2), 30.0))
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = autoCompleteCellHeight
-        tableView.hidden = hidesWhenEmpty ?? true
-        view.addSubview(tableView)
-        autoCompleteTableView = tableView
+    public override func resignFirstResponder() -> Bool {
+        self.autoCompleteTableView?.hidden = true
         
-        autoCompleteTableHeight = 100.0
-    }
-    
-    private func redrawTable(){
-        if autoCompleteTableView != nil{
-            var newFrame = autoCompleteTableView!.frame
-            newFrame.size.height = autoCompleteTableHeight!
-            autoCompleteTableView!.frame = newFrame
-        }
+        return super.resignFirstResponder()
     }
     
     //MARK: - UITableViewDataSource
@@ -133,7 +110,12 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
     //MARK: - UITableViewDelegate
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        onSelect(cell!.textLabel!.text!, indexPath)
+        
+        let selectedText = cell!.textLabel!.text!
+        self.text = selectedText;
+        
+        onSelect(selectedText, indexPath)
+        
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             tableView.hidden = self.hidesWhenSelected
         })
@@ -176,6 +158,35 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
             }
         }
         autoCompleteTableView?.reloadData()
+    }
+    
+    private func commonInit(){
+        hidesWhenEmpty = true
+        autoCompleteAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
+        autoCompleteAttributes![NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12)
+        self.clearButtonMode = .Always
+        self.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
+    }
+    
+    private func setupAutocompleteTable(view:UIView){
+        let screenSize = UIScreen.mainScreen().bounds.size
+        let tableView = UITableView(frame: CGRectMake(self.frame.origin.x, self.frame.origin.y + CGRectGetHeight(self.frame), screenSize.width - (self.frame.origin.x * 2), 30.0))
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = autoCompleteCellHeight
+        tableView.hidden = hidesWhenEmpty ?? true
+        view.addSubview(tableView)
+        autoCompleteTableView = tableView
+        
+        autoCompleteTableHeight = 100.0
+    }
+    
+    private func redrawTable(){
+        if autoCompleteTableView != nil{
+            var newFrame = autoCompleteTableView!.frame
+            newFrame.size.height = autoCompleteTableHeight!
+            autoCompleteTableView!.frame = newFrame
+        }
     }
     
     //MARK: - Internal
