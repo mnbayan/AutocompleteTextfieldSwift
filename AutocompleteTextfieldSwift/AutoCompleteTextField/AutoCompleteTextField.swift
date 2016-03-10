@@ -73,8 +73,13 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
     
     public override func willMoveToSuperview(newSuperview: UIView?) {
         super.willMoveToSuperview(newSuperview)
+
+        guard let superView = newSuperview else {
+          return
+        }
+
         commonInit()
-        setupAutocompleteTable(newSuperview!)
+        setupAutocompleteTable(superView)
     }
     
     public override func resignFirstResponder() -> Bool {
