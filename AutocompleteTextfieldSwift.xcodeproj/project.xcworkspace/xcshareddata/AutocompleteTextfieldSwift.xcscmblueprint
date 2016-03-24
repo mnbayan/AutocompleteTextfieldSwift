@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1D5E9A099DEFDBEC131C996C72A49F371BBEF376",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1D5E9A099DEFDBEC131C996C72A49F371BBEF376" : 0,
+    "31B7D9808F0765E7D6BE15F22F935774E0FB0523" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BB8704C5-244E-4374-A4E4-E64B9E48C8C5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1D5E9A099DEFDBEC131C996C72A49F371BBEF376" : "AutocompleteTextfieldSwift\/",
+    "31B7D9808F0765E7D6BE15F22F935774E0FB0523" : "..\/Work\/Stratpoint\/stratpoint_globepeekaboo"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AutocompleteTextfieldSwift",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AutocompleteTextfieldSwift.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mnbayan\/AutocompleteTextfieldSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1D5E9A099DEFDBEC131C996C72A49F371BBEF376"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/stratpoint.unfuddle.com\/git\/stratpoint_globepeekaboo\/",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "31B7D9808F0765E7D6BE15F22F935774E0FB0523"
+    }
+  ]
+}

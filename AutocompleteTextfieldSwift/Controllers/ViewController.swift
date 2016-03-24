@@ -3,7 +3,7 @@
 //  AutocompleteTextfieldSwift
 //
 //  Created by Mylene Bayan on 2/21/15.
-//  Copyright (c) 2015 MaiLin. All rights reserved.
+//  Copyright (c) 2015 mnbayan. All rights reserved.
 //
 
 import UIKit
@@ -39,7 +39,7 @@ class ViewController: UIViewController, NSURLConnectionDataDelegate{
     
     private func configureTextField(){
         autocompleteTextfield.autoCompleteTextColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
-        autocompleteTextfield.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12.0)
+        autocompleteTextfield.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12.0)!
         autocompleteTextfield.autoCompleteCellHeight = 35.0
         autocompleteTextfield.maximumAutoCompleteCount = 20
         autocompleteTextfield.hidesWhenSelected = true
@@ -58,20 +58,23 @@ class ViewController: UIViewController, NSURLConnectionDataDelegate{
                     self!.connection!.cancel()
                     self!.connection = nil
                 }
-                let urlString = "\(self!.baseURLString)?key=\(self!.googleMapsKey)&input=\(text)"
-                let url = NSURL(string: (urlString as NSString).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
-                if url != nil{
-                    let urlRequest = NSURLRequest(URL: url!)
-                    self!.connection = NSURLConnection(request: urlRequest, delegate: self)
+                let urlString = "\(self!.baseURLString)?key=\(self!.googleMapsKey)&input=\(text)&sensor=1"
+                let s = NSCharacterSet.URLQueryAllowedCharacterSet().mutableCopy() as! NSMutableCharacterSet
+                s.addCharactersInString("+&")
+                if let encodedString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(s) {
+                    if let url = NSURL(string: encodedString) {
+                        let urlRequest = NSURLRequest(URL: url)
+                        self?.connection = NSURLConnection(request: urlRequest, delegate: self)
+                    }
                 }
             }
         }
         
         autocompleteTextfield.onSelect = {[weak self] text, indexpath in
             Location.geocodeAddressString(text, completion: { (placemark, error) -> Void in
-                if let coordinate = placemark?.location?.coordinate{
-                    self!.addAnnotation(coordinate, address: text)
-                    self!.mapView.setCenterCoordinate(coordinate, zoomLevel: 12, animated: true)
+                if let coordinate = placemark?.location?.coordinate {
+                    self?.addAnnotation(coordinate, address: text)
+                    self?.mapView.setCenterCoordinate(coordinate, zoomLevel: 12, animated: true)
                 }
             })
         }

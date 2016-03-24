@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F90275DC1B3E8D5E008185E8 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90275DB1B3E8D5E008185E8 /* AutoCompleteTextField.swift */; };
 		F905D60F1B419684009DA356 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F905D60B1B419684009DA356 /* LaunchScreen.xib */; };
 		F905D6101B419684009DA356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F905D60D1B419684009DA356 /* Main.storyboard */; };
 		F96E31911A98DC36001DCEBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96E31901A98DC36001DCEBF /* Images.xcassets */; };
@@ -16,9 +15,9 @@
 		F96E31B51A98DCA3001DCEBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E31B21A98DCA3001DCEBF /* ViewController.swift */; };
 		F99A8A351A99ACA700DFD19D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99A8A341A99ACA700DFD19D /* MapKit.framework */; };
 		F99A8A371A99ACAB00DFD19D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99A8A361A99ACAB00DFD19D /* CoreLocation.framework */; };
-		F99A8A3A1A99AD5300DFD19D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A8A391A99AD5300DFD19D /* Service.swift */; };
 		F99A8A3C1A99ADAF00DFD19D /* MKMapViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A8A3B1A99ADAF00DFD19D /* MKMapViewExtension.swift */; };
 		F99A8A421A99CEF500DFD19D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99A8A411A99CEF500DFD19D /* Location.swift */; };
+		F9DD71CF1CA3F20200B17E74 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DD71CE1CA3F20200B17E74 /* AutoCompleteTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +31,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F90275DB1B3E8D5E008185E8 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		F905D60C1B419684009DA356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = AutocompleteTextfieldSwift/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
 		F905D60E1B419684009DA356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AutocompleteTextfieldSwift/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		F96E31841A98DC35001DCEBF /* AutocompleteTextfieldSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutocompleteTextfieldSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,9 +43,9 @@
 		F96E31B21A98DCA3001DCEBF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F99A8A341A99ACA700DFD19D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F99A8A361A99ACAB00DFD19D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		F99A8A391A99AD5300DFD19D /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		F99A8A3B1A99ADAF00DFD19D /* MKMapViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapViewExtension.swift; sourceTree = "<group>"; };
 		F99A8A411A99CEF500DFD19D /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		F9DD71CE1CA3F20200B17E74 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,14 +68,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F90275DA1B3E8D4E008185E8 /* AutoCompleteTextField */ = {
-			isa = PBXGroup;
-			children = (
-				F90275DB1B3E8D5E008185E8 /* AutoCompleteTextField.swift */,
-			);
-			path = AutoCompleteTextField;
-			sourceTree = "<group>";
-		};
 		F96E317B1A98DC35001DCEBF = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +91,7 @@
 		F96E31861A98DC35001DCEBF /* AutocompleteTextfieldSwift */ = {
 			isa = PBXGroup;
 			children = (
-				F90275DA1B3E8D4E008185E8 /* AutoCompleteTextField */,
+				F9DD71CD1CA3F20200B17E74 /* AutocompleteTextField */,
 				F99A8A381A99AD4300DFD19D /* Helpers */,
 				F96E31B01A98DCA3001DCEBF /* Controllers */,
 				F96E31B31A98DCA3001DCEBF /* Views */,
@@ -157,11 +147,18 @@
 		F99A8A381A99AD4300DFD19D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				F99A8A391A99AD5300DFD19D /* Service.swift */,
 				F99A8A3B1A99ADAF00DFD19D /* MKMapViewExtension.swift */,
 				F99A8A411A99CEF500DFD19D /* Location.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F9DD71CD1CA3F20200B17E74 /* AutocompleteTextField */ = {
+			isa = PBXGroup;
+			children = (
+				F9DD71CE1CA3F20200B17E74 /* AutoCompleteTextField.swift */,
+			);
+			path = AutocompleteTextField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,7 +208,7 @@
 				LastSwiftMigration = 0710;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0710;
-				ORGANIZATIONNAME = MaiLin;
+				ORGANIZATIONNAME = mnbayan;
 				TargetAttributes = {
 					F96E31831A98DC35001DCEBF = {
 						CreatedOnToolsVersion = 6.1;
@@ -267,9 +264,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F99A8A3C1A99ADAF00DFD19D /* MKMapViewExtension.swift in Sources */,
+				F9DD71CF1CA3F20200B17E74 /* AutoCompleteTextField.swift in Sources */,
 				F96E31B51A98DCA3001DCEBF /* ViewController.swift in Sources */,
-				F99A8A3A1A99AD5300DFD19D /* Service.swift in Sources */,
-				F90275DC1B3E8D5E008185E8 /* AutoCompleteTextField.swift in Sources */,
 				F96E31B41A98DCA3001DCEBF /* AppDelegate.swift in Sources */,
 				F99A8A421A99CEF500DFD19D /* Location.swift in Sources */,
 			);
@@ -402,7 +398,7 @@
 				INFOPLIST_FILE = AutocompleteTextfieldSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = msmonkey.AutocompleteTextfieldSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = mnbayan.AutocompleteTextfieldSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -417,7 +413,7 @@
 				INFOPLIST_FILE = AutocompleteTextfieldSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = msmonkey.AutocompleteTextfieldSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = mnbayan.AutocompleteTextfieldSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

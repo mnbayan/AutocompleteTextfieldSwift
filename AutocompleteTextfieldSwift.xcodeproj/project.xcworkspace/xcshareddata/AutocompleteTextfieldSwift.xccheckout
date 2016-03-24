@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>BB8704C5-244E-4374-A4E4-E64B9E48C8C5</string>
 	<key>IDESourceControlProjectName</key>
-	<string>AutocompleteTextfieldSwift</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>1D5E9A099DEFDBEC131C996C72A49F371BBEF376</key>
 		<string>https://github.com/mnbayan/AutocompleteTextfieldSwift.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>AutocompleteTextfieldSwift.xcodeproj</string>
+	<string>AutocompleteTextfieldSwift.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1D5E9A099DEFDBEC131C996C72A49F371BBEF376</key>
