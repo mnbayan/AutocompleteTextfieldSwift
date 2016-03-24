@@ -26,10 +26,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         configureTextField()
         handleTextFieldInterfaces()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
     }
     
     override func didReceiveMemoryWarning() {
@@ -122,10 +118,6 @@ class ViewController: UIViewController {
                 dataTask?.resume()
             }
         }
-    }
-    
-    func dismissKeyboard() {
-        self.autocompleteTextfield.resignFirstResponder()
     }
 }
 
