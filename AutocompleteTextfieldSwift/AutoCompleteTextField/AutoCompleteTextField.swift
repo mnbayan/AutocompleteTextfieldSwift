@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableViewDelegate{
+public class AutoCompleteTextField:UITextField {
     /// Manages the instance of tableview
     private var autoCompleteTableView:UITableView?
     /// Holds the collection of attributed strings
@@ -83,6 +83,7 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
         autoCompleteAttributes![NSFontAttributeName] = UIFont.boldSystemFontOfSize(12)
         self.clearButtonMode = .Always
         self.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
+        self.addTarget(self, action: "textFieldDidEndEditing", forControlEvents: .EditingDidEnd)
     }
     
     private func setupAutocompleteTable(view:UIView){
@@ -99,68 +100,14 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
     }
     
     private func redrawTable(){
-        if autoCompleteTableView != nil{
-            var newFrame = autoCompleteTableView!.frame
-            newFrame.size.height = autoCompleteTableHeight!
-            autoCompleteTableView!.frame = newFrame
+        if let autoCompleteTableView = autoCompleteTableView, let autoCompleteTableHeight = autoCompleteTableHeight {
+            var newFrame = autoCompleteTableView.frame
+            newFrame.size.height = autoCompleteTableHeight
+            autoCompleteTableView.frame = newFrame
         }
     }
     
-    //MARK: - UITableViewDataSource
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return autoCompleteStrings != nil ? (autoCompleteStrings!.count > maximumAutoCompleteCount ? maximumAutoCompleteCount : autoCompleteStrings!.count) : 0
-    }
-    
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "autocompleteCellIdentifier"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
-        if cell == nil{
-            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
-        }
-        
-        if enableAttributedText{
-            cell?.textLabel?.attributedText = attributedAutoCompleteStrings[indexPath.row]
-        }
-        else{
-            cell?.textLabel?.font = autoCompleteTextFont
-            cell?.textLabel?.textColor = autoCompleteTextColor
-            cell?.textLabel?.text = autoCompleteStrings![indexPath.row]
-        }
-        
-        return cell!
-    }
-    
-    //MARK: - UITableViewDelegate
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        
-        if let selectedText = cell?.textLabel?.text {
-            self.text = selectedText
-            onSelect(selectedText, indexPath)
-        }
-
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            tableView.hidden = self.hidesWhenSelected
-        })
-    }
-    
-    public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if cell.respondsToSelector("setSeparatorInset:"){
-            cell.separatorInset = autoCompleteSeparatorInset
-        }
-        if cell.respondsToSelector("setPreservesSuperviewLayoutMargins:"){
-            cell.preservesSuperviewLayoutMargins = false
-        }
-        if cell.respondsToSelector("setLayoutMargins:"){
-            cell.layoutMargins = autoCompleteSeparatorInset
-        }
-    }
-    
-    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return autoCompleteCellHeight
-    }
-    
-    //MARK: - Private Interface
+    //MARK: - Private Methods
     private func reload(){
         if enableAttributedText{
             let attrs = [NSForegroundColorAttributeName:autoCompleteTextColor, NSFontAttributeName:UIFont.systemFontOfSize(12.0)]
@@ -182,7 +129,6 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
         autoCompleteTableView?.reloadData()
     }
     
-    //MARK: - Internal
     func textFieldDidChange(){
         guard let _ = text else {
             return
@@ -193,5 +139,66 @@ public class AutoCompleteTextField:UITextField, UITableViewDataSource, UITableVi
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.autoCompleteTableView?.hidden =  self.hidesWhenEmpty! ? self.text!.isEmpty : false
         })
+    }
+    
+    func textFieldDidEndEditing() {
+        autoCompleteTableView?.hidden = true
+    }
+}
+
+//MARK: - UITableViewDataSource - UITableViewDelegate
+extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
+  
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return autoCompleteStrings != nil ? (autoCompleteStrings!.count > maximumAutoCompleteCount ? maximumAutoCompleteCount : autoCompleteStrings!.count) : 0
+    }
+    
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellIdentifier = "autocompleteCellIdentifier"
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+        if cell == nil{
+            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+        }
+        
+        if enableAttributedText{
+            cell?.textLabel?.attributedText = attributedAutoCompleteStrings[indexPath.row]
+        }
+        else{
+            cell?.textLabel?.font = autoCompleteTextFont
+            cell?.textLabel?.textColor = autoCompleteTextColor
+            cell?.textLabel?.text = autoCompleteStrings![indexPath.row]
+        }
+        
+        cell?.contentView.gestureRecognizers = nil
+        return cell!
+    }
+    
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        if let selectedText = cell?.textLabel?.text {
+            self.text = selectedText
+            onSelect(selectedText, indexPath)
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            tableView.hidden = self.hidesWhenSelected
+        })
+    }
+    
+    public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if cell.respondsToSelector("setSeparatorInset:"){
+            cell.separatorInset = autoCompleteSeparatorInset
+        }
+        if cell.respondsToSelector("setPreservesSuperviewLayoutMargins:"){
+            cell.preservesSuperviewLayoutMargins = false
+        }
+        if cell.respondsToSelector("setLayoutMargins:"){
+            cell.layoutMargins = autoCompleteSeparatorInset
+        }
+    }
+    
+    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return autoCompleteCellHeight
     }
 }

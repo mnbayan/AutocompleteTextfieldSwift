@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, NSURLConnectionDataDelegate{
+class ViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var autocompleteTextfield: AutoCompleteTextField!
@@ -29,7 +29,7 @@ class ViewController: UIViewController, NSURLConnectionDataDelegate{
         
         let tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         tapGesture.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tapGesture)
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,8 +79,27 @@ class ViewController: UIViewController, NSURLConnectionDataDelegate{
             })
         }
     }
+
+    //MARK: Map Utilities
+    private func addAnnotation(coordinate:CLLocationCoordinate2D, address:String?){
+        if let annotation = selectedPointAnnotation{
+            mapView.removeAnnotation(annotation)
+        }
+        
+        selectedPointAnnotation = MKPointAnnotation()
+        selectedPointAnnotation!.coordinate = coordinate
+        selectedPointAnnotation!.title = address
+        mapView.addAnnotation(selectedPointAnnotation!)
+    }
     
     
+    //MARK: Private Methods
+    func dismissKeyboard(){
+        self.autocompleteTextfield.resignFirstResponder()
+    }
+}
+
+extension ViewController: NSURLConnectionDelegate {
     //MARK: NSURLConnectionDelegate
     func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
         responseData = NSMutableData()
@@ -118,24 +137,6 @@ class ViewController: UIViewController, NSURLConnectionDataDelegate{
     
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
         print("Error: \(error.localizedDescription)")
-    }
-    
-    //MARK: Map Utilities
-    private func addAnnotation(coordinate:CLLocationCoordinate2D, address:String?){
-        if let annotation = selectedPointAnnotation{
-            mapView.removeAnnotation(annotation)
-        }
-        
-        selectedPointAnnotation = MKPointAnnotation()
-        selectedPointAnnotation!.coordinate = coordinate
-        selectedPointAnnotation!.title = address
-        mapView.addAnnotation(selectedPointAnnotation!)
-    }
-    
-    
-    //MARK: Private Methods
-    func dismissKeyboard(){
-        self.autocompleteTextfield.resignFirstResponder()
     }
 }
 
