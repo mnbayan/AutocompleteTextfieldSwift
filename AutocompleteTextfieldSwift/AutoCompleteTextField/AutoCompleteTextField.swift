@@ -110,7 +110,7 @@ public class AutoCompleteTextField:UITextField {
     //MARK: - Private Methods
     private func reload(){
         if enableAttributedText{
-            let attrs = [NSForegroundColorAttributeName:autoCompleteTextColor, NSFontAttributeName:UIFont.systemFontOfSize(12.0)]
+            let attrs = [NSForegroundColorAttributeName:autoCompleteTextColor, NSFontAttributeName:autoCompleteTextFont]
     
             if attributedAutoCompleteStrings.count > 0 {
                 attributedAutoCompleteStrings.removeAll(keepCapacity: false)
