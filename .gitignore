@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Xcode
 #
 build/
@@ -16,7 +15,8 @@ xcuserdata
 DerivedData
 *.hmap
 *.ipa
-*.xcuserstate
+*.xcuserstate]
+.DS_Store
 
 # CocoaPods
 #
@@ -30,11 +30,3 @@ DerivedData
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts
-
-Carthage/Build
-=======
-xcuserdata/
-.DS_Store
-build/
-.xccheckout
->>>>>>> master
