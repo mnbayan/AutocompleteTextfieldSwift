@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Xcode
 #
 build/
@@ -31,3 +32,9 @@ DerivedData
 # Carthage/Checkouts
 
 Carthage/Build
+=======
+xcuserdata/
+.DS_Store
+build/
+.xccheckout
+>>>>>>> master

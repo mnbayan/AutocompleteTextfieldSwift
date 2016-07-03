@@ -3,7 +3,7 @@
 //  AutocompleteTextfieldSwift
 //
 //  Created by Mylene Bayan on 2/22/15.
-//  Copyright (c) 2015 MaiLin. All rights reserved.
+//  Copyright (c) 2015 mnbayan. All rights reserved.
 //
 
 import Foundation
@@ -40,23 +40,23 @@ class Location{
   
   class func addressFromPlacemark(placemark:CLPlacemark)->String{
     var address = ""
-    let name = placemark.addressDictionary?["Name"] as? String
-    let city = placemark.addressDictionary?["City"] as? String
-    let state = placemark.addressDictionary?["State"] as? String
-    let country = placemark.country
     
-    if name != nil{
-      address = constructAddressString(address, newString: name!)
+    if let name = placemark.addressDictionary?["Name"] as? String {
+        address = constructAddressString(address, newString: name)
     }
-    if city != nil{
-      address = constructAddressString(address, newString: city!)
+  
+    if let city = placemark.addressDictionary?["City"] as? String {
+        address = constructAddressString(address, newString: city)
     }
-    if state != nil{
-      address = constructAddressString(address, newString: state!)
+    
+    if let state = placemark.addressDictionary?["State"] as? String {
+        address = constructAddressString(address, newString: state)
     }
-    if country != nil{
-      address = constructAddressString(address, newString: country!)
+    
+    if let country = placemark.country{
+      address = constructAddressString(address, newString: country)
     }
+    
     return address
   }
   
