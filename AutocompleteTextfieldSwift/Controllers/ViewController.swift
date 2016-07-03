@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     
     private func configureTextField(){
         autocompleteTextfield.autoCompleteTextColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
-        autocompleteTextfield.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12.0)!
+		//autocompleteTextfield.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12.0)!
         autocompleteTextfield.autoCompleteCellHeight = 35.0
         autocompleteTextfield.maximumAutoCompleteCount = 20
         autocompleteTextfield.hidesWhenSelected = true
