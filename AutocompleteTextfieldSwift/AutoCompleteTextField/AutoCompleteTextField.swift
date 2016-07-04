@@ -82,8 +82,8 @@ public class AutoCompleteTextField:UITextField {
         autoCompleteAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
         autoCompleteAttributes![NSFontAttributeName] = UIFont.boldSystemFontOfSize(12)
         self.clearButtonMode = .Always
-        self.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
-        self.addTarget(self, action: "textFieldDidEndEditing", forControlEvents: .EditingDidEnd)
+        self.addTarget(self, action: #selector(AutoCompleteTextField.textFieldDidChange), forControlEvents: .EditingChanged)
+        self.addTarget(self, action: #selector(AutoCompleteTextField.textFieldDidEndEditing), forControlEvents: .EditingDidEnd)
     }
     
     private func setupAutocompleteTable(view:UIView){
