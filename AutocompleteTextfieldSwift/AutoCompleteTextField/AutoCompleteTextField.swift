@@ -187,13 +187,13 @@ extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if cell.respondsToSelector("setSeparatorInset:"){
+        if cell.respondsToSelector(Selector("setSeparatorInset:")){
             cell.separatorInset = autoCompleteSeparatorInset
         }
-        if cell.respondsToSelector("setPreservesSuperviewLayoutMargins:"){
+        if cell.respondsToSelector(Selector("setPreservesSuperviewLayoutMargins:")){
             cell.preservesSuperviewLayoutMargins = false
         }
-        if cell.respondsToSelector("setLayoutMargins:"){
+        if cell.respondsToSelector(Selector("setLayoutMargins:")){
             cell.layoutMargins = autoCompleteSeparatorInset
         }
     }
