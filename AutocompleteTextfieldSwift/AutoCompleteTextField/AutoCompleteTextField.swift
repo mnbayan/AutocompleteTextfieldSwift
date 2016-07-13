@@ -74,7 +74,9 @@ public class AutoCompleteTextField:UITextField {
     public override func willMoveToSuperview(newSuperview: UIView?) {
         super.willMoveToSuperview(newSuperview)
         commonInit()
-        setupAutocompleteTable(newSuperview!)
+        if let superview = newSuperview {
+            setupAutocompleteTable(superview)
+        }
     }
     
     private func commonInit(){
