@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     private var responseData:NSMutableData?
     private var selectedPointAnnotation:MKPointAnnotation?
-    private var dataTask:NSURLSessionDataTask?
+    private var dataTask:URLSessionDataTask?
     
     private let googleMapsKey = "AIzaSyDg2tlPcoqxx2Q2rfjhsAKS-9j0n3JA_a4"
     private let baseURLString = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         autocompleteTextfield.hidesWhenEmpty = true
         autocompleteTextfield.enableAttributedText = true
         var attributes = [String:AnyObject]()
-        attributes[NSForegroundColorAttributeName] = UIColor.blackColor()
+        attributes[NSForegroundColorAttributeName] = UIColor.black()
         attributes[NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12.0)
         autocompleteTextfield.autoCompleteAttributes = attributes
     }
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
     }
 
     //MARK: - Private Methods
-    private func addAnnotation(coordinate:CLLocationCoordinate2D, address:String?){
+    private func addAnnotation(_ coordinate:CLLocationCoordinate2D, address:String?){
         if let annotation = selectedPointAnnotation{
             mapView.removeAnnotation(annotation)
         }
@@ -79,18 +79,19 @@ class ViewController: UIViewController {
         mapView.addAnnotation(selectedPointAnnotation!)
     }
     
-    private func fetchAutocompletePlaces(keyword:String) {
+    private func fetchAutocompletePlaces(_ keyword:String) {
         let urlString = "\(baseURLString)?key=\(googleMapsKey)&input=\(keyword)"
-        let s = NSCharacterSet.URLQueryAllowedCharacterSet().mutableCopy() as! NSMutableCharacterSet
-        s.addCharactersInString("+&")
-        if let encodedString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(s) {
-            if let url = NSURL(string: encodedString) {
-                let request = NSURLRequest(URL: url)
-                dataTask = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+        var allowedURLCharacters = CharacterSet.urlQueryAllowed
+        allowedURLCharacters.insert(charactersIn: "+&")
+        
+        if let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: allowedURLCharacters) {
+            if let url = URL(string: encodedString) {
+                let request = URLRequest(url: url)
+                dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
                     if let data = data{
                         
                         do{
-                            let result = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                            let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                             
                             if let status = result["status"] as? String{
                                 if status == "OK"{
@@ -99,14 +100,14 @@ class ViewController: UIViewController {
                                         for dict in predictions as! [NSDictionary]{
                                             locations.append(dict["description"] as! String)
                                         }
-                                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        DispatchQueue.main.async(execute: { () -> Void in
                                             self.autocompleteTextfield.autoCompleteStrings = locations
                                         })
                                         return
                                     }
                                 }
                             }
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            DispatchQueue.main.async(execute: { () -> Void in
                                 self.autocompleteTextfield.autoCompleteStrings = nil
                             })
                         }
