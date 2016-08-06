@@ -16,24 +16,24 @@ let DEGREES = 180.0
 
 extension MKMapView{
   //MARK: Map Conversion Methods
-  private func longitudeToPixelSpaceX(longitude:Double)->Double{
+  private func longitudeToPixelSpaceX(_ longitude:Double)->Double{
     return round(MERCATOR_OFFSET + MERCATOR_RADIUS * longitude * M_PI / DEGREES)
   }
   
-  private func latitudeToPixelSpaceY(latitude:Double)->Double{
+  private func latitudeToPixelSpaceY(_ latitude:Double)->Double{
     return round(MERCATOR_OFFSET - MERCATOR_RADIUS * log((1 + sin(latitude * M_PI / DEGREES)) / (1 - sin(latitude * M_PI / DEGREES))) / 2.0)
   }
   
-  private func pixelSpaceXToLongitude(pixelX:Double)->Double{
+  private func pixelSpaceXToLongitude(_ pixelX:Double)->Double{
     return ((round(pixelX) - MERCATOR_OFFSET) / MERCATOR_RADIUS) * DEGREES / M_PI
     
   }
   
-  private func pixelSpaceYToLatitude(pixelY:Double)->Double{
+  private func pixelSpaceYToLatitude(_ pixelY:Double)->Double{
     return (M_PI / 2.0 - 2.0 * atan(exp((round(pixelY) - MERCATOR_OFFSET) / MERCATOR_RADIUS))) * DEGREES / M_PI
   }
   
-  private func coordinateSpanWithCenterCoordinate(centerCoordinate:CLLocationCoordinate2D, zoomLevel:Double)->MKCoordinateSpan{
+  private func coordinateSpanWithCenterCoordinate(_ centerCoordinate:CLLocationCoordinate2D, zoomLevel:Double)->MKCoordinateSpan{
     
     // convert center coordiate to pixel space
     let centerPixelX = longitudeToPixelSpaceX(centerCoordinate.longitude)
@@ -64,7 +64,8 @@ extension MKMapView{
     return MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
   }
   
-  func setCenterCoordinate(centerCoordinate:CLLocationCoordinate2D, var zoomLevel:Double, animated:Bool){
+  func setCenterCoordinate(_ centerCoordinate:CLLocationCoordinate2D, zoomLevel:Double, animated:Bool){
+    var zoomLevel = zoomLevel
     // clamp large numbers to 28
     zoomLevel = min(zoomLevel, 28)
     

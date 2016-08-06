@@ -11,7 +11,7 @@ import CoreLocation
 
 class Location{
   
-  class func geocodeAddressString(address:String, completion:(placemark:CLPlacemark?, error:NSError?)->Void){
+  class func geocodeAddressString(_ address:String, completion:(placemark:CLPlacemark?, error:NSError?)->Void){
     let geocoder = CLGeocoder()
     geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
       if error == nil{
@@ -25,7 +25,7 @@ class Location{
     })
   }
   
-  class func reverseGeocodeLocation(location:CLLocation,completion:(placemark:CLPlacemark?, error:NSError?)->Void){
+  class func reverseGeocodeLocation(_ location:CLLocation,completion:(placemark:CLPlacemark?, error:NSError?)->Void){
     let geoCoder = CLGeocoder()
     geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
       if let err = error{
@@ -38,7 +38,7 @@ class Location{
     })
   }
   
-  class func addressFromPlacemark(placemark:CLPlacemark)->String{
+  class func addressFromPlacemark(_ placemark:CLPlacemark)->String{
     var address = ""
     
     if let name = placemark.addressDictionary?["Name"] as? String {
@@ -60,13 +60,13 @@ class Location{
     return address
   }
   
-  private class func constructAddressString(string:String, newString:String)->String{
+  private class func constructAddressString(_ string:String, newString:String)->String{
     var address = string
     if !address.isEmpty{
-      address = address.stringByAppendingString(", \(newString)")
+      address = address + ", \(newString)"
     }
     else{
-      address = address.stringByAppendingString(newString)
+      address = address + newString
     }
     return address
   }
