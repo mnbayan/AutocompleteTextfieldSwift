@@ -18,6 +18,8 @@ public class AutoCompleteTextField:UITextField {
     public var onSelect:(String, NSIndexPath)->() = {_,_ in}
     /// Handles textfield's textchanged
     public var onTextChange:(String)->() = {_ in}
+    /// Allows you to configure the table cell
+    public var configureCell:((tableView: UITableView, cellForRowAtIndexPath: NSIndexPath) -> UITableViewCell)?
     
     /// Font for the text suggestions
     public var autoCompleteTextFont = UIFont.systemFontOfSize(12)
@@ -154,23 +156,27 @@ extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "autocompleteCellIdentifier"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
-        if cell == nil{
-            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+        if let configureCell = configureCell {
+            return configureCell(tableView: tableView, cellForRowAtIndexPath: indexPath)
+        } else {
+            let cellIdentifier = "autocompleteCellIdentifier"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+            if cell == nil{
+                cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+            }
+            
+            if enableAttributedText{
+                cell?.textLabel?.attributedText = attributedAutoCompleteStrings[indexPath.row]
+            }
+            else{
+                cell?.textLabel?.font = autoCompleteTextFont
+                cell?.textLabel?.textColor = autoCompleteTextColor
+                cell?.textLabel?.text = autoCompleteStrings![indexPath.row]
+            }
+            
+            cell?.contentView.gestureRecognizers = nil
+            return cell!
         }
-        
-        if enableAttributedText{
-            cell?.textLabel?.attributedText = attributedAutoCompleteStrings[indexPath.row]
-        }
-        else{
-            cell?.textLabel?.font = autoCompleteTextFont
-            cell?.textLabel?.textColor = autoCompleteTextColor
-            cell?.textLabel?.text = autoCompleteStrings![indexPath.row]
-        }
-        
-        cell?.contentView.gestureRecognizers = nil
-        return cell!
     }
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
