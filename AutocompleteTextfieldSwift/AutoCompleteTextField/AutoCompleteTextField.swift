@@ -76,7 +76,9 @@ public class AutoCompleteTextField:UITextField {
     public override func willMoveToSuperview(newSuperview: UIView?) {
         super.willMoveToSuperview(newSuperview)
         commonInit()
-        setupAutocompleteTable(newSuperview!)
+        if let superview = newSuperview {
+            setupAutocompleteTable(newSuperview!)
+        }
     }
     
     private func commonInit(){
@@ -90,7 +92,7 @@ public class AutoCompleteTextField:UITextField {
     
     private func setupAutocompleteTable(view:UIView){
         let screenSize = UIScreen.mainScreen().bounds.size
-        let tableView = UITableView(frame: CGRectMake(self.frame.origin.x, self.frame.origin.y + CGRectGetHeight(self.frame), screenSize.width - (self.frame.origin.x * 2), 30.0))
+        let tableView = UITableView(frame: CGRectMake(self.frame.origin.x, self.frame.origin.y + CGRectGetHeight(self.frame) + 25, screenSize.width - (self.frame.origin.x * 1.5), 30.0))
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = autoCompleteCellHeight
