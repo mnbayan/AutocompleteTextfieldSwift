@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		700620251DBE0B4100065B51 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700620241DBE0B4100065B51 /* UserModel.swift */; };
+		700620271DBE0B5700065B51 /* AutoCompletionTextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700620261DBE0B5700065B51 /* AutoCompletionTextProtocol.swift */; };
+		700620281DBE0EE000065B51 /* AutoCompletionTextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700620261DBE0B5700065B51 /* AutoCompletionTextProtocol.swift */; };
 		F905D60F1B419684009DA356 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F905D60B1B419684009DA356 /* LaunchScreen.xib */; };
 		F905D6101B419684009DA356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F905D60D1B419684009DA356 /* Main.storyboard */; };
 		F96E31911A98DC36001DCEBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96E31901A98DC36001DCEBF /* Images.xcassets */; };
@@ -31,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		700620241DBE0B4100065B51 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = ../UserModel.swift; sourceTree = "<group>"; };
+		700620261DBE0B5700065B51 /* AutoCompletionTextProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoCompletionTextProtocol.swift; path = AutocompleteTextfieldSwift/AutoCompleteTextField/AutoCompletionTextProtocol.swift; sourceTree = SOURCE_ROOT; };
 		F905D60C1B419684009DA356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = AutocompleteTextfieldSwift/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
 		F905D60E1B419684009DA356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AutocompleteTextfieldSwift/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		F96E31841A98DC35001DCEBF /* AutocompleteTextfieldSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutocompleteTextfieldSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,7 +161,9 @@
 		F9DD71CD1CA3F20200B17E74 /* AutocompleteTextField */ = {
 			isa = PBXGroup;
 			children = (
+				700620241DBE0B4100065B51 /* UserModel.swift */,
 				F9DD71CE1CA3F20200B17E74 /* AutoCompleteTextField.swift */,
+				700620261DBE0B5700065B51 /* AutoCompletionTextProtocol.swift */,
 			);
 			path = AutocompleteTextField;
 			sourceTree = "<group>";
@@ -265,8 +272,10 @@
 			files = (
 				F99A8A3C1A99ADAF00DFD19D /* MKMapViewExtension.swift in Sources */,
 				F9DD71CF1CA3F20200B17E74 /* AutoCompleteTextField.swift in Sources */,
+				700620271DBE0B5700065B51 /* AutoCompletionTextProtocol.swift in Sources */,
 				F96E31B51A98DCA3001DCEBF /* ViewController.swift in Sources */,
 				F96E31B41A98DCA3001DCEBF /* AppDelegate.swift in Sources */,
+				700620251DBE0B4100065B51 /* UserModel.swift in Sources */,
 				F99A8A421A99CEF500DFD19D /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				700620281DBE0EE000065B51 /* AutoCompletionTextProtocol.swift in Sources */,
 				F96E31A01A98DC36001DCEBF /* AutocompleteTextfieldSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +359,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -384,6 +395,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -395,11 +407,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = AutocompleteTextfieldSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mnbayan.AutocompleteTextfieldSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -410,11 +424,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = AutocompleteTextfieldSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mnbayan.AutocompleteTextfieldSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -435,6 +451,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "codefun.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutocompleteTextfieldSwift.app/AutocompleteTextfieldSwift";
 			};
 			name = Debug;
@@ -451,6 +468,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "codefun.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutocompleteTextfieldSwift.app/AutocompleteTextfieldSwift";
 			};
 			name = Release;

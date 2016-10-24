@@ -15,7 +15,7 @@ public class AutoCompleteTextField:UITextField {
     /// Holds the collection of attributed strings
     private lazy var attributedAutoCompleteStrings = [NSAttributedString]()
     /// Handles user selection action on autocomplete table view
-    public var onSelect:(String, NSIndexPath)->() = {_,_ in}
+    public var onSelect:(AutoCompletionTextProtocol, NSIndexPath)->() = {_,_ in}
     /// Handles textfield's textchanged
     public var onTextChange:(String)->() = {_ in}
     
@@ -48,8 +48,8 @@ public class AutoCompleteTextField:UITextField {
             redrawTable()
         }
     }
-    /// The strings to be shown on as suggestions, setting the value of this automatically reload the tableview
-    public var autoCompleteStrings:[String]?{
+    /// The models to be shown on as suggestions, setting the value of this automatically reload the tableview
+    public var autoCompleteModels:[AutoCompletionTextProtocol]?{
         didSet{ reload() }
     }
     
@@ -82,8 +82,8 @@ public class AutoCompleteTextField:UITextField {
         autoCompleteAttributes = [NSForegroundColorAttributeName:UIColor.blackColor()]
         autoCompleteAttributes![NSFontAttributeName] = UIFont.boldSystemFontOfSize(12)
         self.clearButtonMode = .Always
-        self.addTarget(self, action: "textFieldDidChange", forControlEvents: .EditingChanged)
-        self.addTarget(self, action: "textFieldDidEndEditing", forControlEvents: .EditingDidEnd)
+        self.addTarget(self, action: #selector(AutoCompleteTextField.textFieldDidChange), forControlEvents: .EditingChanged)
+        self.addTarget(self, action: #selector(AutoCompleteTextField.textFieldDidEndEditing), forControlEvents: .EditingDidEnd)
     }
     
     private func setupAutocompleteTable(view:UIView){
@@ -116,11 +116,16 @@ public class AutoCompleteTextField:UITextField {
                 attributedAutoCompleteStrings.removeAll(keepCapacity: false)
             }
             
-            if let autoCompleteStrings = autoCompleteStrings, let autoCompleteAttributes = autoCompleteAttributes {
-                for i in 0..<autoCompleteStrings.count{
-                    let str = autoCompleteStrings[i] as NSString
-                    let range = str.rangeOfString(text!, options: .CaseInsensitiveSearch)
-                    let attString = NSMutableAttributedString(string: autoCompleteStrings[i], attributes: attrs)
+            if let autoCompleteStrings = autoCompleteModels, let autoCompleteAttributes = autoCompleteAttributes {
+                for i in 0..<autoCompleteStrings.count {
+                    
+                    let model = autoCompleteModels![i]
+                    let str = model.autocompletionText()
+                    let str2  = str as NSString
+                    
+                    let range = str2.rangeOfString(text!, options: .CaseInsensitiveSearch)
+                    
+                    let attString = NSMutableAttributedString(string: str, attributes: attrs)
                     attString.addAttributes(autoCompleteAttributes, range: range)
                     attributedAutoCompleteStrings.append(attString)
                 }
@@ -135,7 +140,7 @@ public class AutoCompleteTextField:UITextField {
         }
         
         onTextChange(text!)
-        if text!.isEmpty{ autoCompleteStrings = nil }
+        if text!.isEmpty{ autoCompleteModels = nil }
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.autoCompleteTableView?.hidden =  self.hidesWhenEmpty! ? self.text!.isEmpty : false
         })
@@ -150,7 +155,7 @@ public class AutoCompleteTextField:UITextField {
 extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
   
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return autoCompleteStrings != nil ? (autoCompleteStrings!.count > maximumAutoCompleteCount ? maximumAutoCompleteCount : autoCompleteStrings!.count) : 0
+        return autoCompleteModels != nil ? (autoCompleteModels!.count > maximumAutoCompleteCount ? maximumAutoCompleteCount : autoCompleteModels!.count) : 0
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -160,13 +165,16 @@ extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
             cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
         }
         
+        let modelObject = autoCompleteModels![indexPath.row] as AutoCompletionTextProtocol
+
         if enableAttributedText{
             cell?.textLabel?.attributedText = attributedAutoCompleteStrings[indexPath.row]
         }
         else{
             cell?.textLabel?.font = autoCompleteTextFont
             cell?.textLabel?.textColor = autoCompleteTextColor
-            cell?.textLabel?.text = autoCompleteStrings![indexPath.row]
+            
+            cell?.textLabel?.text = modelObject.autocompletionText()
         }
         
         cell?.contentView.gestureRecognizers = nil
@@ -174,11 +182,10 @@ extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
         
-        if let selectedText = cell?.textLabel?.text {
-            self.text = selectedText
-            onSelect(selectedText, indexPath)
+        if let modelObject = autoCompleteModels![indexPath.row] as AutoCompletionTextProtocol? {
+            self.text = modelObject.autocompletionText()
+            onSelect(modelObject, indexPath)
         }
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -187,13 +194,13 @@ extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if cell.respondsToSelector("setSeparatorInset:"){
+        if cell.respondsToSelector(Selector("setSeparatorInset:")){
             cell.separatorInset = autoCompleteSeparatorInset
         }
-        if cell.respondsToSelector("setPreservesSuperviewLayoutMargins:"){
+        if cell.respondsToSelector(Selector("setPreservesSuperviewLayoutMargins:")){
             cell.preservesSuperviewLayoutMargins = false
         }
-        if cell.respondsToSelector("setLayoutMargins:"){
+        if cell.respondsToSelector(Selector("setLayoutMargins:")){
             cell.layoutMargins = autoCompleteSeparatorInset
         }
     }
