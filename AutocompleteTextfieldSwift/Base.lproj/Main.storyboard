@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="f7X-UW-gQ8">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f7X-UW-gQ8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--AutoCompleteTextField-->
@@ -13,30 +16,39 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RNz-Bl-C7T">
-                                <rect key="frame" x="5" y="64" width="590" height="120"/>
-                                <animations/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RNz-Bl-C7T">
+                                <frame key="frameInset" minX="5" minY="64" width="590" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="YUa-Yk-cA4"/>
                                 </constraints>
                             </mapView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c03-dp-tKg" customClass="AutoCompleteTextField" customModule="AutocompleteTextfieldSwift" customModuleProvider="target">
-                                <rect key="frame" x="5" y="185" width="590" height="30"/>
-                                <animations/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c03-dp-tKg" customClass="AutoCompleteTextField" customModule="AutocompleteTextfieldSwift" customModuleProvider="target">
+                                <frame key="frameInset" minX="5" minY="185" width="590" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="QmZ-va-8z6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Populating Models as the AutoCompletion" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iks-8A-aMi">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="iks-8A-aMi" firstAttribute="top" secondItem="c03-dp-tKg" secondAttribute="bottom" id="41X-oF-Z0W"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iks-8A-aMi" secondAttribute="bottom" id="6ur-N8-zOz"/>
                             <constraint firstAttribute="trailing" secondItem="RNz-Bl-C7T" secondAttribute="trailing" constant="5" id="84m-SS-ol6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iks-8A-aMi" secondAttribute="trailing" id="9zm-9A-DwY"/>
                             <constraint firstItem="c03-dp-tKg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="ALr-5d-5JH"/>
                             <constraint firstAttribute="trailing" secondItem="c03-dp-tKg" secondAttribute="trailing" constant="5" id="NZ1-U3-CnM"/>
                             <constraint firstItem="RNz-Bl-C7T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="eUo-RT-HZs"/>
+                            <constraint firstItem="iks-8A-aMi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="i22-U2-Bwt"/>
                             <constraint firstItem="RNz-Bl-C7T" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="ndh-u7-US3"/>
                             <constraint firstItem="c03-dp-tKg" firstAttribute="top" secondItem="RNz-Bl-C7T" secondAttribute="bottom" constant="1" id="vdv-LL-YZP"/>
                         </constraints>
@@ -44,7 +56,7 @@
                     <navigationItem key="navigationItem" title="AutoCompleteTextField" id="aqz-rs-0ri"/>
                     <connections>
                         <outlet property="autocompleteTextfield" destination="c03-dp-tKg" id="Vki-7S-0rq"/>
-                        <outlet property="mapView" destination="RNz-Bl-C7T" id="T3s-Pq-pop"/>
+                        <outlet property="modelInfo" destination="iks-8A-aMi" id="q4L-1f-ucA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -59,7 +71,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9m8-De-ZGg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
