@@ -8,37 +8,57 @@
 
 import Foundation
 import CoreLocation
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class Location{
   
-  class func geocodeAddressString(address:String, completion:(placemark:CLPlacemark?, error:NSError?)->Void){
+  class func geocodeAddressString(_ address:String, completion:@escaping (_ placemark:CLPlacemark?, _ error:NSError?)->Void){
     let geocoder = CLGeocoder()
     geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
       if error == nil{
         if placemarks?.count > 0{
-          completion(placemark: (placemarks?[0]), error: error)
+          completion((placemarks?[0]), error as NSError?)
         }
       }
       else{
-        completion(placemark: nil, error: error)
+        completion(nil, error as NSError?)
       }
     })
   }
   
-  class func reverseGeocodeLocation(location:CLLocation,completion:(placemark:CLPlacemark?, error:NSError?)->Void){
+  class func reverseGeocodeLocation(_ location:CLLocation,completion:@escaping (_ placemark:CLPlacemark?, _ error:NSError?)->Void){
     let geoCoder = CLGeocoder()
     geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
       if let err = error{
         print("Error Reverse Geocoding Location: \(err.localizedDescription)")
-        completion(placemark: nil, error: error)
+        completion(nil, error as NSError?)
         return
       }
-      completion(placemark: placemarks?[0], error: nil)
+      completion(placemarks?[0], nil)
       
     })
   }
   
-  class func addressFromPlacemark(placemark:CLPlacemark)->String{
+  class func addressFromPlacemark(_ placemark:CLPlacemark)->String{
     var address = ""
     
     if let name = placemark.addressDictionary?["Name"] as? String {
@@ -60,13 +80,13 @@ class Location{
     return address
   }
   
-  private class func constructAddressString(string:String, newString:String)->String{
+  fileprivate class func constructAddressString(_ string:String, newString:String)->String{
     var address = string
     if !address.isEmpty{
-      address = address.stringByAppendingString(", \(newString)")
+      address = address + ", \(newString)"
     }
     else{
-      address = address.stringByAppendingString(newString)
+      address = address + newString
     }
     return address
   }
