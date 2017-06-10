@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 mnbayan. All rights reserved.
 //
 
- import Foundation
+import Foundation
 import UIKit
 
 open class AutoCompleteTextField:UITextField {
