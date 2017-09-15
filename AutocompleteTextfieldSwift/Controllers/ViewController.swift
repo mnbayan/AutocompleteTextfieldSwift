@@ -29,11 +29,6 @@ class ViewController: UIViewController {
         handleTextFieldInterfaces()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     fileprivate func configureTextField(){
         autocompleteTextfield.autoCompleteTextColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
         autocompleteTextfield.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12.0)!
@@ -48,7 +43,7 @@ class ViewController: UIViewController {
         autocompleteTextfield.autoCompleteAttributes = attributes
     }
     
-    fileprivate func handleTextFieldInterfaces(){
+    fileprivate func handleTextFieldInterfaces() {
         autocompleteTextfield.onTextChange = {[weak self] text in
             if !text.isEmpty{
                 if let dataTask = self?.dataTask {
@@ -58,7 +53,7 @@ class ViewController: UIViewController {
             }
         }
         
-        autocompleteTextfield.onSelect = { placeName, placeId, indexpath in
+        autocompleteTextfield.onSelect = {placeName, placeId, indexpath in
             let placesClient = GMSPlacesClient()
             placesClient.lookUpPlaceID(placeId) { (places, error) in
                 if error == nil {
