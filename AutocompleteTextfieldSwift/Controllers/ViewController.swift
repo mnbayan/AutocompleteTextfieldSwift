@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import GooglePlaces
 
 class ViewController: UIViewController {
     
@@ -57,13 +58,17 @@ class ViewController: UIViewController {
             }
         }
         
-        autocompleteTextfield.onSelect = {[weak self] text, indexpath in
-            Location.geocodeAddressString(text, completion: { (placemark, error) -> Void in
-                if let coordinate = placemark?.location?.coordinate {
-                    self?.addAnnotation(coordinate, address: text)
-                    self?.mapView.setCenterCoordinate(coordinate, zoomLevel: 12, animated: true)
+        autocompleteTextfield.onSelect = { placeName, placeId, indexpath in
+            let placesClient = GMSPlacesClient()
+            placesClient.lookUpPlaceID(placeId) { (places, error) in
+                if error == nil {
+                    if let place = places {
+                        print(place)
+                        print("latitude ", place.coordinate.latitude)
+                        print("longitude", place.coordinate.longitude)
+                    }
                 }
-            })
+            }
         }
     }
 
@@ -90,14 +95,16 @@ class ViewController: UIViewController {
                     if let data = data{
                         
                         do{
-                            let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                            
+                            let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
                             if let status = result["status"] as? String{
                                 if status == "OK"{
                                     if let predictions = result["predictions"] as? NSArray{
-                                        var locations = [String]()
+                                        var locations = [AutoPlace]()
                                         for dict in predictions as! [NSDictionary]{
-                                            locations.append(dict["description"] as! String)
+                                            let description = dict["description"] as! String
+                                            let place_id = dict["place_id"] as! String
+                                            let place = AutoPlace(name: description, id: place_id)
+                                            locations.append(place)
                                         }
                                         DispatchQueue.main.async(execute: { () -> Void in
                                             self.autocompleteTextfield.autoCompleteStrings = locations

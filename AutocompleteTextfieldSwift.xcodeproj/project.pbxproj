@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6912EDF1A748F36671B4210B /* Pods_AutocompleteTextfieldSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6EFA8BAA49879F01E6BFF /* Pods_AutocompleteTextfieldSwift.framework */; };
 		F905D60F1B419684009DA356 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F905D60B1B419684009DA356 /* LaunchScreen.xib */; };
 		F905D6101B419684009DA356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F905D60D1B419684009DA356 /* Main.storyboard */; };
 		F96E31911A98DC36001DCEBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96E31901A98DC36001DCEBF /* Images.xcassets */; };
@@ -31,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		181EEDA102796CFC02E9AC22 /* Pods-AutocompleteTextfieldSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteTextfieldSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteTextfieldSwift/Pods-AutocompleteTextfieldSwift.release.xcconfig"; sourceTree = "<group>"; };
+		DFA6EFA8BAA49879F01E6BFF /* Pods_AutocompleteTextfieldSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocompleteTextfieldSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E95EBFE732353D66C695B5DC /* Pods-AutocompleteTextfieldSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocompleteTextfieldSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutocompleteTextfieldSwift/Pods-AutocompleteTextfieldSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		F905D60C1B419684009DA356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = AutocompleteTextfieldSwift/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
 		F905D60E1B419684009DA356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AutocompleteTextfieldSwift/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		F96E31841A98DC35001DCEBF /* AutocompleteTextfieldSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutocompleteTextfieldSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +59,7 @@
 			files = (
 				F99A8A371A99ACAB00DFD19D /* CoreLocation.framework in Frameworks */,
 				F99A8A351A99ACA700DFD19D /* MapKit.framework in Frameworks */,
+				6912EDF1A748F36671B4210B /* Pods_AutocompleteTextfieldSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +73,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1F99B57A1AB363D3F09258A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DFA6EFA8BAA49879F01E6BFF /* Pods_AutocompleteTextfieldSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D6FDAA8F37890A7FE6E70A38 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E95EBFE732353D66C695B5DC /* Pods-AutocompleteTextfieldSwift.debug.xcconfig */,
+				181EEDA102796CFC02E9AC22 /* Pods-AutocompleteTextfieldSwift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F96E317B1A98DC35001DCEBF = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +98,8 @@
 				F96E31861A98DC35001DCEBF /* AutocompleteTextfieldSwift */,
 				F96E319C1A98DC36001DCEBF /* AutocompleteTextfieldSwiftTests */,
 				F96E31851A98DC35001DCEBF /* Products */,
+				D6FDAA8F37890A7FE6E70A38 /* Pods */,
+				A1F99B57A1AB363D3F09258A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F96E31A31A98DC36001DCEBF /* Build configuration list for PBXNativeTarget "AutocompleteTextfieldSwift" */;
 			buildPhases = (
+				C472B3EACB485D4D2F2E452B /* [CP] Check Pods Manifest.lock */,
 				F96E31801A98DC35001DCEBF /* Sources */,
 				F96E31811A98DC35001DCEBF /* Frameworks */,
 				F96E31821A98DC35001DCEBF /* Resources */,
+				795D689D91D2D206A8C274AF /* [CP] Embed Pods Frameworks */,
+				206D149D22F9D8225EEE4906 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,6 +286,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		206D149D22F9D8225EEE4906 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AutocompleteTextfieldSwift/Pods-AutocompleteTextfieldSwift-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutocompleteTextfieldSwift/Pods-AutocompleteTextfieldSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		795D689D91D2D206A8C274AF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutocompleteTextfieldSwift/Pods-AutocompleteTextfieldSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C472B3EACB485D4D2F2E452B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AutocompleteTextfieldSwift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F96E31801A98DC35001DCEBF /* Sources */ = {
@@ -393,6 +476,7 @@
 		};
 		F96E31A41A98DC36001DCEBF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E95EBFE732353D66C695B5DC /* Pods-AutocompleteTextfieldSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -409,6 +493,7 @@
 		};
 		F96E31A51A98DC36001DCEBF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 181EEDA102796CFC02E9AC22 /* Pods-AutocompleteTextfieldSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

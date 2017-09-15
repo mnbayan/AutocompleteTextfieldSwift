@@ -9,13 +9,18 @@
 import Foundation
 import UIKit
 
+public struct AutoPlace {
+    let name: String
+    let id: String
+}
+
 open class AutoCompleteTextField:UITextField {
     /// Manages the instance of tableview
     fileprivate var autoCompleteTableView:UITableView?
     /// Holds the collection of attributed strings
     fileprivate lazy var attributedAutoCompleteStrings = [NSAttributedString]()
     /// Handles user selection action on autocomplete table view
-    open var onSelect:(String, IndexPath)->() = {_,_ in}
+    open var onSelect:(String, String, IndexPath)->() = {_,_,_ in}
     /// Handles textfield's textchanged
     open var onTextChange:(String)->() = {_ in}
     
@@ -49,7 +54,7 @@ open class AutoCompleteTextField:UITextField {
         }
     }
     /// The strings to be shown on as suggestions, setting the value of this automatically reload the tableview
-    open var autoCompleteStrings:[String]?{
+    open var autoCompleteStrings:[AutoPlace]?{
         didSet{ reload() }
     }
     
@@ -118,9 +123,9 @@ open class AutoCompleteTextField:UITextField {
             
             if let autoCompleteStrings = autoCompleteStrings, let autoCompleteAttributes = autoCompleteAttributes {
                 for i in 0..<autoCompleteStrings.count{
-                    let str = autoCompleteStrings[i] as NSString
+                    let str = autoCompleteStrings[i].name as NSString
                     let range = str.range(of: text!, options: .caseInsensitive)
-                    let attString = NSMutableAttributedString(string: autoCompleteStrings[i], attributes: attrs)
+                    let attString = NSMutableAttributedString(string: autoCompleteStrings[i].name, attributes: attrs)
                     attString.addAttributes(autoCompleteAttributes, range: range)
                     attributedAutoCompleteStrings.append(attString)
                 }
@@ -166,7 +171,7 @@ extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
         else{
             cell?.textLabel?.font = autoCompleteTextFont
             cell?.textLabel?.textColor = autoCompleteTextColor
-            cell?.textLabel?.text = autoCompleteStrings![indexPath.row]
+            cell?.textLabel?.text = autoCompleteStrings![indexPath.row].name
         }
         
         cell?.contentView.gestureRecognizers = nil
@@ -178,7 +183,7 @@ extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
         
         if let selectedText = cell?.textLabel?.text {
             self.text = selectedText
-            onSelect(selectedText, indexPath)
+            onSelect(selectedText, autoCompleteStrings![indexPath.row].id, indexPath)
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
