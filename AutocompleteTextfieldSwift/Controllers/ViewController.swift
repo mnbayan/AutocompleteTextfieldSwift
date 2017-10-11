@@ -55,6 +55,7 @@ class ViewController: UIViewController {
         
         autocompleteTextfield.onSelect = {placeName, placeId, indexpath in
             let placesClient = GMSPlacesClient()
+            print(placeName)
             placesClient.lookUpPlaceID(placeId) { (places, error) in
                 if error == nil {
                     if let place = places {
