@@ -11,7 +11,7 @@ import MapKit
 import GooglePlaces
 
 class ViewController: UIViewController {
-    
+     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var autocompleteTextfield: AutoCompleteTextField!
     
